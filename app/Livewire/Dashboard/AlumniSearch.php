@@ -8,6 +8,12 @@ use App\Models\Student;
 use Illuminate\Support\Collection;
 use Livewire\Component;
 
+/**
+ * @property-read Collection<int, Student> $searchResults
+ * @property-read Collection<int, Student> $classList
+ * @property-read Student|null $selectedStudent
+ * @property-read int $alumniCount
+ */
 class AlumniSearch extends Component
 {
     public string $search = '';
@@ -49,6 +55,7 @@ class AlumniSearch extends Component
             return collect();
         }
 
+        /** @var Student|null $student */
         $student = Student::find($this->selectedStudentId);
 
         if (! $student) {
@@ -68,6 +75,7 @@ class AlumniSearch extends Component
             return null;
         }
 
+        /** @var Student|null */
         return Student::find($this->selectedStudentId);
     }
 

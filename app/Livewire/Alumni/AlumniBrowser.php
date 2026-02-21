@@ -8,6 +8,13 @@ use App\Models\Student;
 use Illuminate\Support\Collection;
 use Livewire\Component;
 
+/**
+ * @property-read Collection<int, int> $years
+ * @property-read Collection<int, Student> $searchResults
+ * @property-read Collection<int, Student> $classList
+ * @property-read bool $hasPreviousYear
+ * @property-read bool $hasNextYear
+ */
 class AlumniBrowser extends Component
 {
     public string $search = '';
@@ -31,6 +38,7 @@ class AlumniBrowser extends Component
 
     public function selectStudent(int $id): void
     {
+        /** @var Student|null $student */
         $student = Student::find($id);
 
         if ($student) {

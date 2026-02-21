@@ -12,7 +12,7 @@
     @if ($selectedYear)
         <!-- Class List Display with Year Navigation -->
         <div>
-            <div class="flex items-center justify-between mb-4">
+            <div class="flex items-center justify-between mb-4 bg-gray-100 dark:bg-zinc-800 rounded-lg px-4 py-2">
                 <div class="flex items-center gap-3">
                     @if ($this->hasPreviousYear)
                         <flux:button wire:click="previousYear" variant="ghost" size="sm" icon="chevron-left">
@@ -21,7 +21,7 @@
                     @endif
                 </div>
 
-                <flux:heading size="lg">Class of {{ $selectedYear }}</flux:heading>
+                <flux:heading size="lg"><span class="hidden lg:inline">Class of </span>{{ $selectedYear }}</flux:heading>
 
                 <div class="flex items-center gap-3">
                     @if ($this->hasNextYear)
@@ -38,22 +38,26 @@
                 </flux:button>
             </div>
 
-            <flux:table>
-                <flux:table.columns>
-                    <flux:table.column>Name</flux:table.column>
-                    <flux:table.column>Senior Year</flux:table.column>
-                </flux:table.columns>
-                <flux:table.rows>
-                    @foreach ($this->classList as $student)
-                        <flux:table.row :class="$student->id_students === $selectedStudentId ? 'bg-blue-50 dark:bg-blue-900/20' : ''">
-                            <flux:table.cell>{{ $student->full_name }}</flux:table.cell>
-                            <flux:table.cell>{{ $student->class_of }}</flux:table.cell>
-                        </flux:table.row>
-                    @endforeach
-                </flux:table.rows>
-            </flux:table>
+            <div class="flex justify-center">
+                <div class="w-full" style="max-width: 28rem;">
+                    <flux:table class="table-fixed w-full">
+                        <flux:table.columns class="bg-gray-100 dark:bg-zinc-800">
+                            <flux:table.column class="w-3/4 ps-4">Name</flux:table.column>
+                            <flux:table.column class="w-1/4 pe-4">Senior Year</flux:table.column>
+                        </flux:table.columns>
+                        <flux:table.rows>
+                            @foreach ($this->classList as $student)
+                                <flux:table.row :class="$student->id_students === $selectedStudentId ? 'bg-blue-50 dark:bg-blue-900/20' : ''">
+                                    <flux:table.cell class="py-0.5 ps-4">{{ $student->full_name }}</flux:table.cell>
+                                    <flux:table.cell class="py-0.5 pe-4">{{ $student->class_of }}</flux:table.cell>
+                                </flux:table.row>
+                            @endforeach
+                        </flux:table.rows>
+                    </flux:table>
+                </div>
+            </div>
 
-            <div class="flex items-center justify-between mt-4">
+            <div class="flex items-center justify-between mt-4 bg-gray-100 dark:bg-zinc-800 rounded-lg px-4 py-2">
                 <div>
                     @if ($this->hasPreviousYear)
                         <flux:button wire:click="previousYear" variant="ghost" size="sm" icon="chevron-left">
@@ -96,12 +100,13 @@
         <!-- Year Buttons -->
         <div>
             <flux:heading size="lg" class="mb-4">Browse by Senior Year</flux:heading>
-            <div class="flex flex-wrap gap-2">
+            <div class="grid grid-cols-4 sm:grid-cols-6 lg:grid-cols-8 gap-1.5">
                 @foreach ($this->years as $year)
                     <flux:button
                         wire:click="selectYear({{ $year }})"
                         variant="outline"
-                        size="sm"
+                        size="xs"
+                        class="w-full"
                     >
                         {{ $year }}
                     </flux:button>

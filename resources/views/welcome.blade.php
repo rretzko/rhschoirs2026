@@ -5,6 +5,7 @@
         <meta name="viewport" content="width=device-width, initial-scale=1">
 
         <title>{{ config('app.name', 'rhschoirs2026') }}</title>
+        <link rel="icon" type="image/svg+xml" href="{{ asset('favicon.svg') }}">
 
         <!-- Fonts -->
         <link rel="preconnect" href="https://fonts.bunny.net">
@@ -37,27 +38,28 @@
 
         <!-- Hero Section -->
         <main>
-            <div class="relative bg-gradient-to-br from-blue-900 via-blue-800 to-indigo-900 overflow-hidden">
-                <div class="absolute inset-0 bg-black/20"></div>
+            <div class="relative overflow-hidden" style="background-color: #1A5C05;">
+                <img src="{{ asset('images/ridge-high-school.jpg') }}" alt="Ridge High School" class="absolute inset-0 w-full h-full object-cover opacity-30" />
+                <div class="absolute inset-0 bg-black/10"></div>
                 <div class="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-24 sm:py-32 lg:py-40">
                     <div class="text-center">
                         <h2 class="text-4xl sm:text-5xl lg:text-6xl font-bold text-white tracking-tight">
                             Ridge High School
                         </h2>
-                        <p class="mt-4 text-xl sm:text-2xl text-blue-100">
+                        <p class="mt-4 text-xl sm:text-2xl text-white/90">
                             Choir Alumni Directory
                         </p>
-                        <p class="mt-6 max-w-2xl mx-auto text-lg text-blue-200">
+                        <p class="mt-6 max-w-2xl mx-auto text-lg text-white/80">
                             Connecting Ridge High School choir alumni from 1983 to the present.
                             Log in to search and browse the alumni directory.
                         </p>
                         <div class="mt-10">
                             @auth
-                                <flux:button href="{{ url('/dashboard') }}" variant="primary" size="lg">
+                                <flux:button href="{{ url('/dashboard') }}" variant="primary">
                                     Go to Dashboard
                                 </flux:button>
                             @else
-                                <flux:button href="{{ route('login') }}" variant="primary" size="lg">
+                                <flux:button href="{{ route('login') }}" variant="primary">
                                     Log in to Get Started
                                 </flux:button>
                             @endauth

@@ -20,27 +20,31 @@
         <div>
             <div class="flex items-center justify-between mb-4">
                 <flux:heading size="lg">
-                    Class of {{ $this->selectedStudent->class_of }}
+                    <span class="!hidden lg:!inline">Class of </span>{{ $this->selectedStudent->class_of }}
                 </flux:heading>
                 <flux:button wire:click="clearSelection" variant="ghost" size="sm">
                     Back to Search
                 </flux:button>
             </div>
 
-            <flux:table>
-                <flux:table.columns>
-                    <flux:table.column>Name</flux:table.column>
-                    <flux:table.column>Senior Year</flux:table.column>
-                </flux:table.columns>
-                <flux:table.rows>
-                    @foreach ($this->classList as $classmate)
-                        <flux:table.row :class="$classmate->id_students === $selectedStudentId ? 'bg-blue-50 dark:bg-blue-900/20' : ''">
-                            <flux:table.cell>{{ $classmate->full_name }}</flux:table.cell>
-                            <flux:table.cell>{{ $classmate->class_of }}</flux:table.cell>
-                        </flux:table.row>
-                    @endforeach
-                </flux:table.rows>
-            </flux:table>
+            <div class="flex justify-center">
+                <div class="w-full max-w-lg">
+                    <flux:table>
+                        <flux:table.columns class="bg-gray-100 dark:bg-zinc-800">
+                            <flux:table.column class="ps-4">Name</flux:table.column>
+                            <flux:table.column class="pe-4">Senior Year</flux:table.column>
+                        </flux:table.columns>
+                        <flux:table.rows>
+                            @foreach ($this->classList as $classmate)
+                                <flux:table.row :class="$classmate->id_students === $selectedStudentId ? 'bg-blue-50 dark:bg-blue-900/20' : ''">
+                                    <flux:table.cell>{{ $classmate->full_name }}</flux:table.cell>
+                                    <flux:table.cell>{{ $classmate->class_of }}</flux:table.cell>
+                                </flux:table.row>
+                            @endforeach
+                        </flux:table.rows>
+                    </flux:table>
+                </div>
+            </div>
         </div>
     @elseif (strlen($search) >= 2)
         <!-- Search Results -->
