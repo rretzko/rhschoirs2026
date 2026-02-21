@@ -67,7 +67,7 @@ class Student extends Model
 
     public function scopeSearch(Builder $query, string $term): Builder
     {
-        $term = '%'.$term.'%';
+        $term = '%'.trim($term).'%';
 
         return $query->where(function (Builder $q) use ($term) {
             $q->where('last_name', 'LIKE', $term)

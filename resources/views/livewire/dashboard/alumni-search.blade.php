@@ -9,7 +9,7 @@
     <div class="mb-6 max-w-md">
         <flux:input
             wire:model.live.debounce.300ms="search"
-            placeholder="Search by name..."
+            placeholder="Search by first OR last name (one word only)..."
             icon="magnifying-glass"
             clearable
         />

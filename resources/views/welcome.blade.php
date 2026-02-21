@@ -59,9 +59,9 @@
                                     Go to Dashboard
                                 </flux:button>
                             @else
-                                <flux:button href="{{ route('login') }}" variant="primary">
+                                <a href="{{ route('login') }}" class="inline-flex items-center px-6 py-2 text-base font-semibold text-green-900 bg-white rounded-lg shadow-lg hover:bg-green-100 hover:scale-105 transition">
                                     Log in to Get Started
-                                </flux:button>
+                                </a>
                             @endauth
                         </div>
                     </div>
