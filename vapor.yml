@@ -2,12 +2,13 @@ id: 74774
 name: rhschoirs2026
 environments:
   production:
-    #domain: rhschoirs.net
+    domain: rhschoirs.net
     memory: 1024
     cli-memory: 512
     runtime: 'php-8.4:al2'
-    database: vapor_rhschoirs
+    database: mfr-prod
     build:
       - 'composer install --no-dev'
       - 'php artisan event:cache'
-      - 'npm ci && npm run build && rm -rf node_modules'
+      #- 'npm ci && npm run build && rm -rf node_modules'
+      - 'npm ci && npm run build && rmdir /s /q node_modules'
