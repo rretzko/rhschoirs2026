@@ -3,7 +3,7 @@ name: rhschoirs2026
 environments:
   production:
     domain: rhschoirs.net
-    memory: 1024
+    memory: 512
     cli-memory: 512
     runtime: 'php-8.4:al2'
     database: mfr-prod
