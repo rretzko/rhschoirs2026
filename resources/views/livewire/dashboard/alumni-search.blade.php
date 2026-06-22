@@ -58,6 +58,7 @@
                 <div class="space-y-1">
                     @foreach ($this->searchResults as $result)
                         <flux:button
+                            wire:key="search-result-{{ $result->id_students }}"
                             wire:click="selectStudent({{ $result->id_students }})"
                             variant="ghost"
                             class="w-full justify-start"
