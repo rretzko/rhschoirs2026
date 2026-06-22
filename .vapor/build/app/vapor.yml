@@ -10,4 +10,4 @@ environments:
     build:
       - 'composer install --no-dev'
       - 'php artisan event:cache'
-      - 'npm ci && npm run build && node -e "require(''fs'').rmSync(''node_modules'', { recursive: true, force: true })"'
+      - 'npm ci && npm run build && rm -rf node_modules'
